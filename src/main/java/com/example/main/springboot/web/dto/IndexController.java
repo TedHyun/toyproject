@@ -1,7 +1,6 @@
 package com.example.main.springboot.web.dto;
 
-import com.example.main.springboot.config.auth.dto.SessionUser;
-import com.example.main.springboot.domain.user.User;
+import com.example.main.springboot.config.dto.SessionUser;
 import com.example.main.springboot.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
