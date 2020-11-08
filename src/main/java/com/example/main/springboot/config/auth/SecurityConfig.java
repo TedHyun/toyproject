@@ -1,8 +1,9 @@
 package com.example.main.springboot.config.auth;
 
-import com.example.main.springboot.config.auth.CustomOAuth2UserService;
+
 import com.example.main.springboot.domain.user.Role;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -11,12 +12,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
     private final CustomOAuth2UserService customOAuth2UserService;
 
     @Override
     protected  void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable().headers().frameOptions().disable()
+        http
+                .csrf().disable().headers().frameOptions().disable()
                 .and()
                     .authorizeRequests()
     .antMatchers("/","/css/**","/image/**",
