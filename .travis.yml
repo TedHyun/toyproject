@@ -18,6 +18,22 @@ cache:
 
 script: "./gradlew clean build"
 
+before_deploy:
+  - zip -r toyproject
+  - mkdir -p deploy
+  - mv toyproject.zip deploy/toyproject.zip
+
+deploy:
+  -provider: s3
+    access_key_id: AKIATOFJV64SAFY2YA25
+    secret_access_key: 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
+    bucket: springbootbuild
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
+
 # CI 실행 완료시 메일로 알람
 notifications:
   email:
