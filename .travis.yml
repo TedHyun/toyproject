@@ -28,10 +28,11 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_SECRET_KEY
     bucket: springbootbuild
+    key: toyproject.zip
+    bundle_type: zip
+    application: toyproject
+    deployment_group: toyproject_codeDeploy
     region: ap-northeast-2
-    skip_cleanup: true
-    acl: private
-    local_dir: deploy
     wait-until-deployed: true
 
 # CI 실행 완료시 메일로 알람
