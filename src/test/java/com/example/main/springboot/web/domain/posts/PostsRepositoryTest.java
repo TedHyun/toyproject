@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,6 +19,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PostsRepositoryTest {
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     PostsRepository postsRepository;
@@ -68,5 +73,12 @@ public class PostsRepositoryTest {
 
         assertThat(posts.getCreatedDate()).isAfter(now);
         assertThat(posts.getModifiedDate()).isAfter(now);
+    }
+
+    @Test
+    public void testQueryDSL(){
+        String userId = "1";
+        QUserRole quserRole = QueryRole.userRole;
+
     }
 }
