@@ -2,6 +2,7 @@ package com.example.main.springboot.web.domain.posts;
 
 import com.example.main.springboot.domain.posts.Posts;
 import com.example.main.springboot.domain.posts.PostsRepository;
+import com.querydsl.jpa.impl.JPAQuery;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -77,8 +78,11 @@ public class PostsRepositoryTest {
 
     @Test
     public void testQueryDSL(){
-        String userId = "1";
-        QUserRole quserRole = QueryRole.userRole;
+
+
+
+
+
 
     }
 }

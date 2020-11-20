@@ -47,7 +47,7 @@ dependencies {
     testCompile('org.springframework.security:spring-security-test')
 }
 
-apply plugin:"com.ewerk.gradle.plugins.querydsl" // Plugin 적용
+apply plugin : "com.ewerk.gradle.plugins.querydsl" // Plugin 적용
 def querydslSrcDir ='src/main/generated' // QClass 생성 위치
 
 querydsl {
@@ -70,4 +70,12 @@ compileQuerydsl{
 
 configurations {
     querydsl.extendsFrom compileClasspath
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', querydslSrcDir]
+        }
+    }
 }
