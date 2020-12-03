@@ -6,14 +6,14 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import java.util.Optional;
 
 // #JPA DATA Version
-//public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User,Long> {
 
-   // Optional<User> findByEmail(String email);
-
-//}
-
-//Querydsl Version
-public interface UserRepository extends JpaRepository<User,Long>, QuerydslPredicateExecutor<User>, UserRepoCustom {
+    Optional<User> findByEmail(String email);
 
 }
+
+//Querydsl Version
+//public interface UserRepository extends JpaRepository<User,Long>{
+
+//}
 
