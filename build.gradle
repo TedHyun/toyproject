@@ -1,114 +1,41 @@
-buildscript {
-    ext {
-      //  springBootVersion = '2.4.0.RELEASE'
-        queryDslVersion = "4.4.0"
-    }
-    //2.1.9 setting
-//    repositories {
-//        mavenCentral()
-//        jcenter()
-//       // maven{ url "https://plugins.gradle.org/m2/"}   2.1.9
-//    }
-}
-plugins {
-    id "org.springframework.boot" version "2.4.0"
-    id "io.spring.dependency-management" version "1.0.9.RELEASE"
-    id "java"
+plugins { // (1)
+    id 'org.springframework.boot' version '2.4.1' // RELEASE 삭제
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
 }
 
-// 2.1.9 setting
-//apply plugin: 'java'
-//apply plugin: 'eclipse'
-//apply plugin: 'org.springframework.boot'
-//apply plugin: 'io.spring.dependency-management'
-
-
-group 'com.example'
-version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+group 'com.jojoldu.book'
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
     jcenter()
-    maven{ url "https://repo.spring.io/milestone" } //2.4.0
-    maven{ url "https://repo.spring.io/snapshot" }  //2.4.0
+}
+
+// for Junit 5
+test { // (2)
+    useJUnitPlatform()
 }
 
 dependencies {
-    //2.1.9 -주석 처리된건 2.19 사용중인것 2.1.9에서 따온것
-//    compile('org.springframework.boot:spring-boot-starter-web')
-//    compile('org.projectlombok:lombok')
-//    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-//    compile('com.h2database:h2:1.4.197')
-//    compile('org.springframework.boot:spring-boot-starter-mustache')
-//    compile('org.springframework.boot:spring-boot-devtools')
 
-//    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
-//    compile('org.springframework.session:spring-session-jdbc')
-//    compile('org.mariadb.jdbc:mariadb-java-client')
-
-    implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client'
-
-// 2.4.0 queryDsl
     implementation('org.springframework.boot:spring-boot-starter-web')
-    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
-    implementation('org.springframework.boot:spring-boot-devtools')
-    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
-    implementation('org.springframework.session:spring-session-jdbc')
-    implementation('org.mariadb.jdbc:mariadb-java-client')
-    implementation('com.h2database:h2:1.4.197')
-//  2.4.0 QueryDsl
-    implementation("com.querydsl:querydsl-jpa:${queryDslVersion}")
-    implementation 'junit:junit:4.12'
-    annotationProcessor ("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
-    testImplementation ("com.querydsl:querydsl-jpa:${queryDslVersion}")
-    testAnnotationProcessor("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
 
-// 2.4.0 Lombok
+    // lombok
     implementation('org.projectlombok:lombok')
     annotationProcessor('org.projectlombok:lombok')
-    testImplementation( 'org.projectlombok:lombok')
+    testImplementation('org.projectlombok:lombok')
     testAnnotationProcessor('org.projectlombok:lombok')
 
-    runtimeOnly('com.h2database:h2')
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation("org.mariadb.jdbc:mariadb-java-client")
+    implementation('com.h2database:h2')
 
-    testImplementation( 'org.springframework.boot:spring-boot-starter-test')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client') // 권한 관련
+    implementation('org.springframework.session:spring-session-jdbc') // 권한 관련
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation('org.springframework.security:spring-security-test')
+    testImplementation("org.springframework.security:spring-security-test") // 권한 관련
 }
-
-//2.1.9 querydsl option
-//apply plugin : "com.ewerk.gradle.plugins.querydsl" // Plugin 적용
-//def querydslSrcDir ='src/main/generated' // QClass 생성 위치
-//
-//querydsl {
-//    library ="com.querydsl:querydsl-apt"
-//    jpa =true
-//    querydslSourcesDir = querydslSrcDir
-//}
-//
-//sourceSets {
-//    main {
-//        java {
-//            srcDirs = ['src/main/java', querydslSrcDir]
-//        }
-//    }
-//}
-//
-//compileQuerydsl{
-//    options.annotationProcessorPath = configurations.querydsl
-//}
-//
-//configurations {
-//    querydsl.extendsFrom compileClasspath
-//}
-//
-//sourceSets {
-//    main {
-//        java {
-//            srcDirs = ['src/main/java', querydslSrcDir]
-//        }
-//    }
-//}

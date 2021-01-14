@@ -23,6 +23,7 @@ var index ={
             alert('Complete');
             window.location.href='/';
         }).fail(function (error){
+            alert(JSON.stringify(data));
             alert(JSON.stringify(error));
         });
     }
