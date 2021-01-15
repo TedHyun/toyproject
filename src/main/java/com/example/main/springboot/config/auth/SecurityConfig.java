@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable().headers().frameOptions().disable()
                 .and()
                     .authorizeRequests()
-    .antMatchers("/","/css/**","/image/**",
+    .antMatchers("/", "/static/css/**","/image/**",
                             "/js/**","/h2-console/**").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
