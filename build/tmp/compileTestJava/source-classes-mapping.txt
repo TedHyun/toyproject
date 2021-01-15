@@ -1,0 +1,10 @@
+com/example/main/springboot/web/domain/posts/PostsRepositoryTest.java
+ com.example.main.springboot.web.domain.posts.PostsRepositoryTest
+com/example/main/springboot/web/HelloControllerTest.java
+ com.example.main.springboot.web.HelloControllerTest
+com/example/main/springboot/web/dto/HelloControllerDtoTest.java
+ com.example.main.springboot.web.dto.HelloControllerDtoTest
+com/example/main/springboot/web/indexControllerTest.java
+ com.example.main.springboot.web.indexControllerTest
+com/example/main/springboot/web/PostsApiControllerTest.java
+ com.example.main.springboot.web.PostsApiControllerTest
