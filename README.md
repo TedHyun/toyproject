@@ -18,3 +18,5 @@ AWS EC2 (putty)
     S3
     CodeDeploy
 Travis
+
+마지막 빌드 이후 AWS 사용 중지로 인한 자동화 및 빌드 일시 중지
